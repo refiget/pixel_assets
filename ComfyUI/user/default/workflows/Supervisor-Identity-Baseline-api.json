@@ -1,0 +1,211 @@
+{
+  "1": {
+    "class_type": "UNETLoader",
+    "inputs": {
+      "unet_name": "flux-2-klein-4b.safetensors",
+      "weight_dtype": "default"
+    }
+  },
+  "2": {
+    "class_type": "CLIPLoader",
+    "inputs": {
+      "clip_name": "qwen_3_4b.safetensors",
+      "type": "flux2",
+      "device": "default"
+    }
+  },
+  "3": {
+    "class_type": "VAELoader",
+    "inputs": {
+      "vae_name": "flux2-vae.safetensors"
+    }
+  },
+  "4": {
+    "class_type": "LoraLoaderModelOnly",
+    "inputs": {
+      "model": [
+        "1",
+        0
+      ],
+      "lora_name": "pixel-art-klein-4b.safetensors",
+      "strength_model": 0.35
+    }
+  },
+  "5": {
+    "class_type": "CLIPTextEncode",
+    "inputs": {
+      "clip": [
+        "2",
+        0
+      ],
+      "text": "IMAGE 1 is the identity and pixel art baseline. IMAGE 2 is ONLY a wardrobe and hairstyle guide. Draw the EXACT SAME dragon girl from image 1 dressed as a supervisor. Preserve image 1 face, wide rounded chibi head, large soft violet eyes, tiny smiling mouth, pink cheeks, identical head-to-body ratio, short cute torso and short limbs, lavender dragon horn shape and curled lavender tail. Her head remains large relative to her small body EXACTLY like image 1; do not adopt the taller body or narrower face of image 2. Keep image 1 snow-white hair with pale lavender shading, dark muted-purple outlines, large square pixels, same simple two-tone color clusters and same low pixel resolution. Change ONLY two things using image 2 as guide: gather her hair into ONE high ponytail with a small plain black elastic, naturally attached at the upper back of her head; replace the white dress with a black business blazer, white shirt, lavender tie, black pleated skirt and round black shoes. Preserve the fluffy rounded hair clumps and bangs of image 1, but gathered into a ponytail rather than long loose hair on both sides. No terminal hair clip, no hair bow, no ornaments, no gray hair, no shiny gradients, no finer detail. Front facing neutral full body idle pose, arms relaxed, a small clipboard at her side, connected thick curled dragon tail clearly visible. Plain light gray background, no text. This is one character changing her clothes and hairstyle, NOT a new character. Natural high ponytail root, soft medium-length wavy ponytail falling on viewer right; match image 1 face and proportions exactly."
+    }
+  },
+  "6": {
+    "class_type": "ConditioningZeroOut",
+    "inputs": {
+      "conditioning": [
+        "5",
+        0
+      ]
+    }
+  },
+  "7": {
+    "class_type": "EmptyFlux2LatentImage",
+    "inputs": {
+      "width": 384,
+      "height": 480,
+      "batch_size": 1
+    }
+  },
+  "8": {
+    "class_type": "RandomNoise",
+    "inputs": {
+      "noise_seed": 20261203
+    }
+  },
+  "9": {
+    "class_type": "KSamplerSelect",
+    "inputs": {
+      "sampler_name": "euler"
+    }
+  },
+  "10": {
+    "class_type": "Flux2Scheduler",
+    "inputs": {
+      "steps": 4,
+      "width": 384,
+      "height": 480
+    }
+  },
+  "11": {
+    "class_type": "CFGGuider",
+    "inputs": {
+      "model": [
+        "4",
+        0
+      ],
+      "positive": [
+        "20",
+        0
+      ],
+      "negative": [
+        "6",
+        0
+      ],
+      "cfg": 1.0
+    }
+  },
+  "12": {
+    "class_type": "SamplerCustomAdvanced",
+    "inputs": {
+      "noise": [
+        "8",
+        0
+      ],
+      "guider": [
+        "11",
+        0
+      ],
+      "sampler": [
+        "9",
+        0
+      ],
+      "sigmas": [
+        "10",
+        0
+      ],
+      "latent_image": [
+        "7",
+        0
+      ]
+    }
+  },
+  "13": {
+    "class_type": "VAEDecode",
+    "inputs": {
+      "samples": [
+        "12",
+        0
+      ],
+      "vae": [
+        "3",
+        0
+      ]
+    }
+  },
+  "14": {
+    "class_type": "SaveImage",
+    "inputs": {
+      "images": [
+        "13",
+        0
+      ],
+      "filename_prefix": "supervisor/refine-C/sample"
+    }
+  },
+  "15": {
+    "class_type": "LoadImage",
+    "inputs": {
+      "image": "dragon-identity-baseline.png"
+    }
+  },
+  "16": {
+    "class_type": "VAEEncode",
+    "inputs": {
+      "pixels": [
+        "15",
+        0
+      ],
+      "vae": [
+        "3",
+        0
+      ]
+    }
+  },
+  "17": {
+    "class_type": "ReferenceLatent",
+    "inputs": {
+      "conditioning": [
+        "5",
+        0
+      ],
+      "latent": [
+        "16",
+        0
+      ]
+    }
+  },
+  "18": {
+    "class_type": "LoadImage",
+    "inputs": {
+      "image": "supervisor-baseline-C.png"
+    }
+  },
+  "19": {
+    "class_type": "VAEEncode",
+    "inputs": {
+      "pixels": [
+        "18",
+        0
+      ],
+      "vae": [
+        "3",
+        0
+      ]
+    }
+  },
+  "20": {
+    "class_type": "ReferenceLatent",
+    "inputs": {
+      "conditioning": [
+        "17",
+        0
+      ],
+      "latent": [
+        "19",
+        0
+      ]
+    }
+  }
+}

@@ -1,0 +1,7 @@
+.DS_Store
+assets/references/
+installers/
+ComfyUI/models/
+ComfyUI/extra_model_paths.yaml
+__pycache__/
+*.py[cod]
