@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="800" height="620" viewBox="0 0 800 620" shape-rendering="crispEdges">
   <rect width="800" height="620" fill="#dcd9df"/>
-  <text x="24" y="34" font-family="Hiragino Sans GB, STHeiti, sans-serif" font-size="22" font-weight="bold" fill="#352c46">办公室俯视 2D 平面基线 v1</text>
+  <text x="24" y="34" font-family="Hiragino Sans GB, STHeiti, sans-serif" font-size="22" font-weight="bold" fill="#352c46">开放式办公室俯视 2D 平面基线 v2</text>
   <text x="776" y="34" text-anchor="end" font-family="Menlo, monospace" font-size="13" fill="#675e70">48 × 32 tiles · 16 px grid</text>
 
   <!-- Main floor -->
@@ -8,7 +8,6 @@
   <path d="M44 64V552 M60 64V552 M76 64V552 M92 64V552 M108 64V552 M124 64V552 M140 64V552 M156 64V552 M172 64V552 M188 64V552 M204 64V552 M220 64V552 M236 64V552 M252 64V552 M268 64V552 M284 64V552 M300 64V552 M316 64V552 M332 64V552 M348 64V552 M364 64V552 M380 64V552 M396 64V552 M412 64V552 M428 64V552 M444 64V552 M460 64V552 M476 64V552 M492 64V552 M508 64V552 M524 64V552 M540 64V552 M556 64V552 M572 64V552 M588 64V552 M604 64V552 M620 64V552 M636 64V552 M652 64V552 M668 64V552 M684 64V552 M700 64V552 M716 64V552 M732 64V552 M748 64V552 M28 80H772 M28 96H772 M28 112H772 M28 128H772 M28 144H772 M28 160H772 M28 176H772 M28 192H772 M28 208H772 M28 224H772 M28 240H772 M28 256H772 M28 272H772 M28 288H772 M28 304H772 M28 320H772 M28 336H772 M28 352H772 M28 368H772 M28 384H772 M28 400H772 M28 416H772 M28 432H772 M28 448H772 M28 464H772 M28 480H772 M28 496H772 M28 512H772 M28 528H772 M28 544H772" stroke="#e3ddd3" stroke-width="1"/>
 
   <!-- Room floor colors -->
-  <rect x="264" y="80" width="272" height="104" fill="#eee5f0"/>
   <rect x="40" y="200" width="312" height="160" fill="#f0eadf"/>
   <rect x="448" y="200" width="312" height="160" fill="#e1eff0"/>
   <rect x="40" y="376" width="312" height="160" fill="#e7ecdE"/>
@@ -17,14 +16,12 @@
 
   <!-- Outer walls -->
   <path d="M28 64H772V552H28Z" fill="none" stroke="#463a58" stroke-width="8"/>
-  <!-- Supervisor office walls and doorway -->
-  <path d="M256 64V192 M544 64V192 M256 192H376 M416 192H544" fill="none" stroke="#463a58" stroke-width="8"/>
-  <path d="M376 192H416" stroke="#b98e73" stroke-width="4"/>
-  <text x="400" y="102" text-anchor="middle" font-family="Hiragino Sans GB, STHeiti, sans-serif" font-size="19" font-weight="bold" fill="#463a58">主管</text>
-
-  <!-- Staff area and central corridor -->
-  <path d="M360 192V360 M432 192V360 M360 360H352 M432 360H448" fill="none" stroke="#463a58" stroke-width="6"/>
-  <path d="M360 360V376 M432 360V376" stroke="#463a58" stroke-width="6"/>
+  <!-- Open workspace: supervisor sits above the two left-side desks -->
+  <text x="400" y="88" text-anchor="middle" font-family="Hiragino Sans GB, STHeiti, sans-serif" font-size="17" font-weight="bold" fill="#463a58">主管工位</text>
+  <rect x="344" y="100" width="112" height="48" rx="3" fill="#b8896d" stroke="#574357" stroke-width="3"/>
+  <rect x="382" y="108" width="36" height="21" fill="#39465a" stroke="#574357" stroke-width="2"/>
+  <rect x="386" y="111" width="28" height="14" fill="#aaa0c3"/>
+  <rect x="388" y="148" width="24" height="10" fill="#765747"/>
   <text x="188" y="220" text-anchor="middle" font-family="Hiragino Sans GB, STHeiti, sans-serif" font-size="17" font-weight="bold" fill="#463a58">资料员 · 程序员</text>
   <text x="604" y="220" text-anchor="middle" font-family="Hiragino Sans GB, STHeiti, sans-serif" font-size="17" font-weight="bold" fill="#315b67">执行员 · 独立玻璃实验室</text>
 
@@ -81,5 +78,5 @@
   <rect x="28" y="574" width="16" height="16" fill="#eee5f0" stroke="#463a58"/><text x="50" y="587" font-family="Hiragino Sans GB, STHeiti, sans-serif" font-size="12" fill="#463a58">主管区</text>
   <rect x="130" y="574" width="16" height="16" fill="#e1eff0" stroke="#4b9aa3"/><text x="152" y="587" font-family="Hiragino Sans GB, STHeiti, sans-serif" font-size="12" fill="#463a58">玻璃实验室</text>
   <rect x="272" y="574" width="16" height="16" fill="#e7ecde" stroke="#526752"/><text x="294" y="587" font-family="Hiragino Sans GB, STHeiti, sans-serif" font-size="12" fill="#463a58">公共空间</text>
-  <text x="772" y="587" text-anchor="end" font-family="Hiragino Sans GB, STHeiti, sans-serif" font-size="12" fill="#675e70">纯俯视 2D · 静态家具位置 · 互动后续添加</text>
+  <text x="772" y="587" text-anchor="end" font-family="Hiragino Sans GB, STHeiti, sans-serif" font-size="12" fill="#675e70">开放办公区 · 纯俯视 2D · 静态家具 · 互动后续添加</text>
 </svg>
